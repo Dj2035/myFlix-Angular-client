@@ -132,7 +132,7 @@ export class FetchApiDataService {
   }
 
   // Delete user account
-  deleteUser(): Observable<any> {
+  public deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
 
