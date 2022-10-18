@@ -18,7 +18,9 @@ export class WelcomePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //Function that will open the dialog modal when the sign up button is clicked
+  /**
+   * opens the user registration dialog when signup button is clicked
+   */
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       // Assigning style to dialog box
@@ -26,7 +28,9 @@ export class WelcomePageComponent implements OnInit {
     });
   }
 
-  //Function that will open the dialog modal when the Login button is clicked
+  /**
+   * opens the user login dialog when login button is clicked
+   */
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       // Assigning style to dialog box

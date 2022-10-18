@@ -29,7 +29,11 @@ export class MovieCardComponent implements OnInit {
     this.getUserFavoriteMovies();
   }
 
-  //Gets list of movies from API call
+  /**
+   * Gets movies from api call and sets the movies state to return JSON file
+   * @returns array holding movies objects
+   * @function getAllMovies
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -38,9 +42,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  //Gets user favorite movies from api call and sets the favorite movies 
-  //variable to return JSON file
-  getUserFavoriteMovies(): void{
+  /**
+   * Gets favorite movies from api call and sets the favorite movies variable to return JSON file
+   * @returns array holding ids of user's favorite movies
+   * @function getFavoriteMovies
+   */
+  getUserFavoriteMovies(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.favoriteMovies = resp.FavoriteMovies;
       console.log(this.favoriteMovies);
@@ -48,7 +55,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  // Adds a movie to the list of favorite movies via an API call
+  /**
+   * Adds a movie to the list of favorite movies via an API call
+   * @param id
+   * @function addFavoriteMovie
+   */
   addToFavoriteMovies(id: string): void {
     console.log(id);
     if (this.favoriteMovies.includes(id)) {
@@ -56,14 +67,18 @@ export class MovieCardComponent implements OnInit {
         'This movie already exists in your fovorite movies list', 'OK', {
         duration: 2000,
       });
-    } 
+    }
     this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
       console.log(result);
       this.ngOnInit();
     });
   }
 
-  //Removes a movie from the list of favorite movies via an API call
+  /**
+   * Removes a movie from the list of favorite movies via an API call
+   * @param id
+   * @function removeFavoriteMovie
+   */
   removeFromFavoriteMovies(id: string): void {
     console.log(id);
     this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {
@@ -72,7 +87,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  //Opens genre dialog from GenreComponent to display genre info
+  /**
+   * Opens the user genre dialog from GenreComponent to displaying details
+   * @param name
+   * @param description
+   */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: {
@@ -84,7 +103,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  //Opens director dialog from DirectorComponent to display info on director
+  /**
+   * Opens the user director dialog from DirectorComponent to displaying details
+   * @param name
+   * @param bio
+   * @param birthday
+   */
   openDirectorDialog(name: string, bio: string, birthday: string): void {
     this.dialog.open(DirectorComponent, {
       data: {
@@ -97,7 +121,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  //Opens synopsis dialog from SynopsisComponent for displaying movie details
+  /**
+   * opens the user synopsis dialog from SynopsisComponent to displaying details
+   * @param title
+   * @param description
+   */
   openSynopsisDialog(title: string, description: string): void {
     this.dialog.open(SynopsisComponent, {
       data: {
