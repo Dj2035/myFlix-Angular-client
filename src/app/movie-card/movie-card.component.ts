@@ -56,18 +56,25 @@ export class MovieCardComponent implements OnInit {
   }
 
   /**
+   * Checks if a movie is included in the user's list of favorite movies
+   * @param id 
+   * @returns true, if the movie is a favorite move, else false
+   */
+  isFav(id: string): boolean {
+    return this.favoriteMovies.includes(id)
+  }
+
+  /**
    * Adds a movie to the list of favorite movies via an API call
    * @param id
    * @function addFavoriteMovie
    */
   addToFavoriteMovies(id: string): void {
     console.log(id);
-    if (this.favoriteMovies.includes(id)) {
-      this.snackBar.open(
-        'This movie already exists in your fovorite movies list', 'OK', {
-        duration: 2000,
-      });
-    }
+    this.snackBar.open(
+      'Movie succesfully added to list of favorite', 'OK', {
+      duration: 2000,
+    });
     this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
       console.log(result);
       this.ngOnInit();
@@ -81,6 +88,10 @@ export class MovieCardComponent implements OnInit {
    */
   removeFromFavoriteMovies(id: string): void {
     console.log(id);
+    this.snackBar.open(
+      'Movie succesfully removed from your list of favorite', 'OK', {
+      duration: 2000,
+    });
     this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {
       console.log(result);
       this.ngOnInit();
