@@ -40,13 +40,13 @@ export class UserLoginFormComponent implements OnInit {
 
       this.dialogRef.close(); // This will close the modal on success!
       console.log(response);
-      this.snackBar.open('user logged in successfully!', 'OK', {
+      this.snackBar.open('Successful login!', 'OK', {
         duration: 2000
       });
       this.router.navigate(['movies']);
     }, (response) => {
       console.log(response);
-      this.snackBar.open('User login failed', 'OK', {
+      this.snackBar.open('Login failed', 'OK', {
         duration: 2000
       });
     })
