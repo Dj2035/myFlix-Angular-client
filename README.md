@@ -1,5 +1,7 @@
 # MyFlixAngularClient
 
+![myFlix-client-Angular](src/angular.png)
+
 ## Description
 
 The aim of this project is to build the client-side for an application called myFlix using Angular based on its existing server-side code (REST API and database), with supporting documentation.
